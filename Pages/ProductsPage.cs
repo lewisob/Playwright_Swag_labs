@@ -3,11 +3,13 @@ using Microsoft.Playwright;
 namespace Playwright_POC.Pages;
 
 public class ProductsPage: BasePage {
-    private static string s_shoppingCartLnk => "id=shopping_cart_container";
-    private static string s_titleLbl => ".title";
-    private static string s_addToCartBtn => "\"Add to cart\"";
+    public ILocator ShoppingCartLnk;
+    public ILocator TitleLbl;
+    public ILocator AddToCartBtn;
 
-    private static string s_url => "https://www.saucedemo.com/";
-
-    public ProductsPage(IPage page) : base(page) { }
+    public ProductsPage(IPage page) : base(page) { 
+        ShoppingCartLnk = page.Locator("id=shopping_cart_container");
+        TitleLbl = page.Locator(".title");
+        AddToCartBtn = page.Locator("\"Add to cart\"");
+    }
 }

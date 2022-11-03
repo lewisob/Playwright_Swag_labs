@@ -4,7 +4,7 @@ namespace Playwright_POC.Pages;
 
 public class BasePage
 {
-    protected IPage Page;
+    public IPage Page;
 
     public BasePage(IPage page)
     {
