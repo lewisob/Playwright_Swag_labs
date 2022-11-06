@@ -3,8 +3,15 @@ using Microsoft.Playwright;
 namespace Playwright_POC.Pages;
 
 public class COStepTwoPage: BasePage {
-    private static string s_productNameLnk => ".cart_item";
-    private static string s_finishBtn => "id=finish";
-    
-    public COStepTwoPage(IPage page) : base(page) { }
+    public ILocator ProductNameLnk;
+    public ILocator FinishBtn;
+
+    public COStepTwoPage(IPage page) : base(page) {
+        ProductNameLnk = page.Locator(".cart_item");
+        FinishBtn = page.Locator("id=finish");
+    }
+
+     public async Task Continue() {
+        await FinishBtn.ClickAsync();
+    }
 }

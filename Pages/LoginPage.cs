@@ -14,7 +14,7 @@ public class LoginPage: BasePage {
         UsernameTxt = page.Locator("id=user-name");
         PasswordTxt = page.Locator("id=password");
         LoginBtn = page.Locator("id=login-button");
-        ErrorLbl = page.Locator("data-test=\"error\"]");
+        ErrorLbl = page.Locator("[data-test=\"error\"]");
     }
 
     public async Task GotoAsync() {

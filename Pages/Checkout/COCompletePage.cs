@@ -3,7 +3,9 @@ using Microsoft.Playwright;
 namespace Playwright_POC.Pages;
 
 public class COCompletePage: BasePage {
-    private static string s_ponyExpressImg => ".pony_express";
+    public ILocator PonyExpressImg;
 
-    public COCompletePage(IPage page) : base(page) { }
+    public COCompletePage(IPage page) : base(page) {
+        PonyExpressImg = page.Locator(".pony_express");
+     }
 }

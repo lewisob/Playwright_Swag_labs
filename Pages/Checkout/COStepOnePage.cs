@@ -3,10 +3,22 @@ using Microsoft.Playwright;
 namespace Playwright_POC.Pages;
 
 public class COStepOnePage: BasePage {
-    private static string s_firstNameTxt => "id=first-name";
-    private static string s_lastNameTxt => "id=last-name";
-    private static string s_zipCodeTxt => "id=postal-code";
-    private static string s_continueBtn => "id=continue";
+    public ILocator FirstNameTxt;
+    public ILocator LastNameTxt;
+    public ILocator ZipCodeTxt;
+    public ILocator ContinueBtn;
 
-    public COStepOnePage(IPage page) : base(page) { }
+    public COStepOnePage(IPage page) : base(page) {
+        FirstNameTxt = page.Locator("id=first-name");
+        LastNameTxt = page.Locator("id=last-name");
+        ZipCodeTxt = page.Locator("id=postal-code");
+        ContinueBtn = page.Locator("id=continue");
+    }
+
+    public async Task SubmitCustomerInformation(string fName, string lName, string postCode) {
+        await FirstNameTxt.TypeAsync(fName);
+        await LastNameTxt.TypeAsync(lName);
+        await ZipCodeTxt.TypeAsync(postCode);
+        await ContinueBtn.ClickAsync();
+    }
 }
